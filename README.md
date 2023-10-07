@@ -6,9 +6,9 @@ ReactJS frontend repo auth-backend for JWT cookie-based authentication.
 <img width="350" alt="Screenshot 2023-10-06 at 10 06 18 PM" src="https://github.com/hitpoint6/auth-frontend/assets/62563309/118c26ba-004a-4df5-8a0f-bd1dbbb775e1">
 
 ## Packages
-    - React
-    - React Router Dom
-    - context api: for managing the user's authentication state
+- React
+- React Router Dom
+- context api: for managing the user's authentication state
 
 ### `npm start`
 
@@ -19,7 +19,7 @@ The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
 ## Production Plan
-    - Add form validation
-    - Email confirmation and Password reset
-    - Social login
-    - Deploy to vercel
+- Add form validation
+- Email confirmation and Password reset
+- Social login
+- Deploy to vercel
