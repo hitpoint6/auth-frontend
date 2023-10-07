@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthProvider';
+import { Helmet } from 'react-helmet';
 
 function Signup() {
     const { isAuthenticated, setIsAuthenticated } = useAuth();
@@ -61,30 +62,37 @@ function Signup() {
     }
 
     return (
-        <div className="mt-10 max-w-md mx-auto" >
-            <input
-                className="w-full p-2 mb-4 border rounded-md"
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={emailInputHandler}
-            />
-            <input
-                className="w-full p-2 mb-4 border rounded-md"
-                placeholder="Password"
-                type="password"
-                value={password}
-                onChange={passwordInputHandler}
-            />
-            <button onClick={signup} className="custom_button w-full">
-                Signup
-            </button>
-            <button onClick={login} className="custom_button w-full">
-                Login
-            </button>
+        <>
+            <Helmet>
+                <title>Signup Page</title>
+                <meta name="description" content="This is the Signup page." />
+            </Helmet>
+            <div className="mt-10 max-w-md mx-auto" >
+                <input
+                    className="w-full p-2 mb-4 border rounded-md"
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={emailInputHandler}
+                />
+                <input
+                    className="w-full p-2 mb-4 border rounded-md"
+                    placeholder="Password"
+                    type="password"
+                    value={password}
+                    onChange={passwordInputHandler}
+                />
+                <button onClick={signup} className="custom_button w-full">
+                    Signup
+                </button>
+                <button onClick={login} className="custom_button w-full">
+                    Login
+                </button>
 
-            {errorMessage && <div className="mt-4 text-center text-red-400">{errorMessage}</div>}
-        </div>
+                {errorMessage && <div className="mt-4 text-center text-red-400">{errorMessage}</div>}
+            </div>
+        </>
+
 
     );
 }
