@@ -6,7 +6,6 @@ function Navbar() {
     const { isAuthenticated, logout } = useAuth();
 
     useEffect(() => {
-        console.log("isAuthenticated:", isAuthenticated);
     }, [isAuthenticated]);
 
     return (

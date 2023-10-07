@@ -7,7 +7,7 @@ function Signup() {
     const { isAuthenticated, setIsAuthenticated } = useAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [message, setMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
 
     if (isAuthenticated) {
@@ -15,31 +15,50 @@ function Signup() {
     }
 
     const signup = async () => {
+        if (!isValidEmail(email)) {
+            setErrorMessage('Please enter a valid email.');
+            return;
+        }
+
         try {
-            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/signup`, { email, password }, { withCredentials: true });
-            console.log(response);
-            setMessage(response.data);
+            await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/signup`, { email, password }, { withCredentials: true });
 
             setIsAuthenticated(true);
             navigate('/dashboard');
         } catch (error) {
             console.log(error);
-            setMessage(`${error.response.data}`);
+            setErrorMessage(`${error.response.data}`);
         }
     };
 
+    function isValidEmail(email) {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+    }
+
     const login = async () => {
+        if (!isValidEmail(email)) {
+            setErrorMessage('Please enter a valid email.');
+            return;
+        }
         try {
-            console.log(email, password);
             await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/login`, { email, password }, { withCredentials: true });
 
             setIsAuthenticated(true);
             navigate('/dashboard');
         } catch (error) {
             console.log(error);
-            setMessage(`${error.response.data}`);
+            setErrorMessage(`${error.response.data}`);
         }
     };
+
+    const emailInputHandler = (e) => {
+        setEmail(e.target.value);
+    }
+
+    const passwordInputHandler = (e) => {
+        setPassword(e.target.value);
+    }
 
     return (
         <div className="mt-10 max-w-md mx-auto" >
@@ -48,14 +67,14 @@ function Signup() {
                 type="email"
                 placeholder="Email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={emailInputHandler}
             />
             <input
                 className="w-full p-2 mb-4 border rounded-md"
                 placeholder="Password"
                 type="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={passwordInputHandler}
             />
             <button onClick={signup} className="custom_button w-full">
                 Signup
@@ -64,7 +83,7 @@ function Signup() {
                 Login
             </button>
 
-            {message && <div className="mt-4 text-center">{message}</div>}
+            {errorMessage && <div className="mt-4 text-center text-red-400">{errorMessage}</div>}
         </div>
 
     );

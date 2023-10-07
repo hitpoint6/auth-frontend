@@ -13,7 +13,6 @@ export function AuthProvider({ children }) {
     async function checkAuthStatus() {
         try {
             const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/auth/status`, { withCredentials: true });
-            console.log("Auth status:", response.data);
             setIsAuthenticated(response.data.isAuthenticated);
         } catch (error) {
             console.error("Error checking authentication status:", error);
@@ -27,9 +26,7 @@ export function AuthProvider({ children }) {
     async function logout() {
         try {
             // If you're using tokens, clear them
-            const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/logout`, { method: 'POST', credentials: 'include' });
-            console.log(res);
-
+            await fetch(`${process.env.REACT_APP_SERVER_URL}/api/logout`, { method: 'POST', credentials: 'include' });
             setIsAuthenticated(false);
         } catch (error) {
             console.error("Error logging out", error);
