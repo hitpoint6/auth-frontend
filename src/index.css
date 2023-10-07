@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.header {
+    @apply text-2xl font-semibold mb-4 text-gray-900
+}
+
+.paragraph {
+    @apply text-gray-700
+}
+.content {
+@apply mx-auto max-w-5xl p-4 mt-4 bg-white
+}
+
+.input_field {
+@apply border p-1 w-full mt-2 rounded-sm
+}
+
+.input_label {
+@apply block mb-5 text-sm
+}
+
+.custom_button {
+@apply block bg-black text-white py-2 px-4 rounded-md mt-2 hover:bg-gray-400
+}
+
+.custom_button_outline {
+@apply block bg-white text-black outline outline-black py-2 px-4 rounded-md mt-2
+}
+
+.shift_up_card {
+@apply transform transition-transform duration-300 ease-in-out hover:-translate-y-2 cursor-pointer
+}

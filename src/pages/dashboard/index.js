@@ -14,8 +14,8 @@ function Dashboard() {
 
     return (
         <div>
-            <h1>Dashboard</h1>
-            <p>This is the dashboard page</p>
+            <h1 className="header">Dashboard</h1>
+            <p className="paragraph">This is the dashboard page</p>
         </div>
     );
 }

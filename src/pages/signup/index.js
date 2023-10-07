@@ -42,28 +42,31 @@ function Signup() {
     };
 
     return (
-        <div className="w-96 p-8 bg-white rounded shadow">
+        <div className="mt-10 max-w-md mx-auto" >
             <input
-                className="w-full p-2 mb-4 border rounded"
+                className="w-full p-2 mb-4 border rounded-md"
+                type="email"
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
             />
             <input
-                type="password"
-                className="w-full p-2 mb-4 border rounded"
+                className="w-full p-2 mb-4 border rounded-md"
                 placeholder="Password"
+                type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />
-            <button onClick={signup} className="w-full p-2 mb-2 bg-blue-500 text-white rounded">
+            <button onClick={signup} className="custom_button w-full">
                 Signup
             </button>
-            <button onClick={login} className="w-full p-2 bg-green-500 text-white rounded">
+            <button onClick={login} className="custom_button w-full">
                 Login
             </button>
+
             {message && <div className="mt-4 text-center">{message}</div>}
         </div>
+
     );
 }
 
