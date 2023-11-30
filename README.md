@@ -14,10 +14,6 @@ ReactJS frontend repo auth-backend for JWT cookie-based authentication . Use tog
 - React Router Dom
 - context api: for managing the user's authentication state
 
-  - React
-  - React Router Dom
-  - context api: for managing the user's authentication state
-
 ## Run
 
 `npm start`
@@ -31,6 +27,3 @@ You may also see any lint errors in the console.
 
     - Email confirmation and Password reset
     - Social login
-    - Deploy to vercel
-
-    git push https://hitpoint6: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@hitpoint6/auth-backend.git --all
